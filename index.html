@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+</head>
+
+<nav>
+  <div class="container nav-content">
+    <div class="logo">SpendWise</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#login">Login</a>
+    </div>
+  </div>
+</nav>
+<section class="hero">
+  <div class="container">
+    <h1>Take Control of Your Finances</h1>
+    <p>Track expenses, set budgets, and achieve your financial goals with SpendWise</p>
+    <a href="#signup" class="cta-button">Start </a>
+  </div>
+</section>
+
+<form id="expense-form">
+  <input type="text" id="expense-name" placeholder="Expense Name" required>
+  <input type="number" id="expense-amount" placeholder="Amount" required>
+  <select id="expense-category">
+    <option value="Food">Food</option>
+    <option value="Travel">Travel</option>
+    <option value="Entertainment">Entertainment</option>
+    <option value="Other">Other</option>
+  </select>
+  <button type="submit">Add Expense</button>
+</form>
+<h2>Total: $<span id="total-amount">0</span></h2>
+<ul id="expense-list"></ul>
+
+
+
+
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
