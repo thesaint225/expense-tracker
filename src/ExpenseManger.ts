@@ -78,11 +78,44 @@ export class ExpenseManger {
   }
 
   /**
+   * Retrieves all expenses
+   * @returns {Expense[]} Array of expenses
+   */
+
+  public getExpense(): Expense[] | undefined {
+    return Array.from(this.expenses.values());
+  }
+
+  /**
    * Retrieves an expense by its id.
    * @param id - The ID of the expense to retrieve.
    * @returns The expense if found, or undefined if not.
    */
   public getExpenseById(id: string): Expense | undefined {
     return this.expenses.get(id);
+  }
+
+  /**
+   * Updates an existing expense
+   * @throws {Error} If expense doesn't exist
+   */
+
+  public updateExpense(
+    id: string,
+    updates: Partial<Omit<Expense, "id" | "createAt">>
+  ): Expense {
+    const existing = this.expenses.get(id);
+    if (!existing) {
+      throw new Error("Expense not found ");
+    }
+    const updated: Expense = {
+      ...existing,
+      ...updates,
+      id,
+      createdAt: existing.createdAt,
+      updatedAt: new Date(),
+    };
+
+    this.expense.set(id, updated);
   }
 }
