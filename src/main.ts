@@ -52,23 +52,22 @@ const newIcome4 = expenseMangerInstance.createExpense({
   time: new Date(),
 });
 
-console.log(newIncome1, newIncome2, newIncome3, newIcome4);
+// console.log(newIncome1, newIncome2, newIncome3, newIcome4);
 
-// step 3:Add the expense to the manger
-// expenseMangerInstance.addExpense(newExpense);
-// expenseMangerInstance.addExpense(newExpense1);
-// expenseMangerInstance.addExpense(newExpense2);
-// expenseMangerInstance.addExpense(newExpense3);
+// step 3:Add the income to the manger
+IncomeMangerInstance.addIncome(newIcome4);
+IncomeMangerInstance.addIncome(newIncome1);
+IncomeMangerInstance.addIncome(newIncome3);
 
-// // step 4:retrieve all expenses using getExpense();
-// const allExpenses = expenseMangerInstance.getExpense();
+// // step 4:retrieve all Income using getAllIncomes();
+const allIncomes = IncomeMangerInstance.getAllIncomes();
 
-// // step 5 :
-// if (allExpenses) {
-//   console.log(allExpenses);
-// } else {
-//   throw new Error("can no be found");
-// }
+// step 5 :
+if (allIncomes) {
+  console.log(allIncomes);
+} else {
+  throw new Error("can no be found");
+}
 
 // // step6:
 // const deleteSuccess = expenseMangerInstance.deleteExpense(newExpense1.id);

@@ -53,4 +53,18 @@ export class IncomeManger {
     };
     return income;
   }
+
+  public addIncome(income: Income): boolean {
+    try {
+      this.incomes.set(income.id, { ...income });
+      return true;
+    } catch (error) {
+      console.log("failed to add income", error);
+      return false;
+    }
+  }
+
+  public getAllIncomes(): Income[] {
+    return Array.from(this.incomes.values());
+  }
 }
