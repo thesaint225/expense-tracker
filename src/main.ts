@@ -1,7 +1,7 @@
 import "./style.css";
 import { animateStatsOnScroll } from "./animateStats";
 import { ExpenseManger } from "./ExpenseManger";
-import { IncomeManger } from "./IncomeManager";
+import { IncomeManager } from "./IncomeManager";
 
 window.addEventListener("DOMContentLoaded", () => {
   const stats = document.querySelectorAll(
@@ -14,10 +14,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // step1 create an instance of ExpenseManger
 const expenseMangerInstance = new ExpenseManger();
-const IncomeMangerInstance = new IncomeManger();
+const incomeMangerInstance = new IncomeManager();
 
 // step 2 create new expense
-const newIncome1 = IncomeMangerInstance.createIncome({
+const newIncome1 = incomeMangerInstance.createIncome({
   name: "Lunch",
   category: "Food",
   note: "Lunch with client",
@@ -35,7 +35,7 @@ const newIncome2 = expenseMangerInstance.createExpense({
   time: new Date(),
 });
 
-const newIncome3 = IncomeMangerInstance.createIncome({
+const newIncome3 = incomeMangerInstance.createIncome({
   name: "Electricity Bill",
   category: "Utilities",
   note: "Monthly electricity bill",
@@ -55,12 +55,12 @@ const newIcome4 = expenseMangerInstance.createExpense({
 // console.log(newIncome1, newIncome2, newIncome3, newIcome4);
 
 // step 3:Add the income to the manger
-IncomeMangerInstance.addIncome(newIcome4);
-IncomeMangerInstance.addIncome(newIncome1);
-IncomeMangerInstance.addIncome(newIncome3);
+incomeMangerInstance.addIncome(newIcome4);
+incomeMangerInstance.addIncome(newIncome1);
+incomeMangerInstance.addIncome(newIncome3);
 
 // // step 4:retrieve all Income using getAllIncomes();
-const allIncomes = IncomeMangerInstance.getAllIncomes();
+const allIncomes = incomeMangerInstance.getAllIncomes();
 
 // step 5 :
 if (allIncomes) {
@@ -76,6 +76,13 @@ if (allIncomes) {
 // } else {
 //   console.log(`Failed to delete expense with ID ${newExpense.id}.`);
 // }
+
+const deleteSuccess = incomeMangerInstance.deleteIncome(newIncome3.id);
+if (deleteSuccess) {
+  console.log(`Expense with ID ${newIncome2.id} was deleted successfully.`);
+} else {
+  console.log(`Failed to delete expense with ID ${newIncome2.id}.`);
+}
 
 // // Verify by checking the remaining expenses
 // const remainingExpenses = expenseMangerInstance.getExpense();

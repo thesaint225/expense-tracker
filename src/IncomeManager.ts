@@ -16,7 +16,7 @@ export interface Income {
  * Service class to manage incomes with proper encapsulation
  */
 
-export class IncomeManger {
+export class IncomeManager {
   private incomes: Map<string, Income> = new Map();
   /**
    * Generates a unique identifier using the UUID library
@@ -60,6 +60,15 @@ export class IncomeManger {
       return true;
     } catch (error) {
       console.log("failed to add income", error);
+      return false;
+    }
+  }
+
+  public deleteIncome(id: string): boolean {
+    try {
+      return this.incomes.delete(id);
+    } catch (error) {
+      console.log("failed to delete", error);
       return false;
     }
   }
