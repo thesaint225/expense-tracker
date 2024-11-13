@@ -68,7 +68,24 @@ if (allExpenses) {
   throw new Error("can no be found");
 }
 
+// step6:
+const deleteSuccess = expenseMangerInstance.deleteExpense(newExpense1.id);
+if (deleteSuccess) {
+  console.log(`Expense with ID ${newExpense.id} was deleted successfully.`);
+} else {
+  console.log(`Failed to delete expense with ID ${newExpense.id}.`);
+}
+
+// Verify by checking the remaining expenses
+const remainingExpenses = expenseMangerInstance.getExpense();
+console.log("Remaining Expenses:", remainingExpenses);
+
 // retrieve  the expense  by it ID
 const expenseId = newExpense.id;
 const retrieveExpense = expenseMangerInstance.getExpenseById(expenseId);
 console.log(retrieveExpense);
+
+// Delete all entries
+
+expenseMangerInstance.deleteAll();
+console.log(expenseMangerInstance.getExpense()); // Output: []

@@ -116,6 +116,19 @@ export class ExpenseManger {
       updatedAt: new Date(),
     };
 
-    this.expense.set(id, updated);
+    this.expenses.set(id, updated);
+    return updated;
+  }
+
+  /**
+   * Deletes an expense
+   * @returns {boolean} Success status
+   */
+  public deleteExpense(id: string): boolean {
+    return this.expenses.delete(id);
+  }
+
+  public deleteAll(): void {
+    this.expenses.clear();
   }
 }
