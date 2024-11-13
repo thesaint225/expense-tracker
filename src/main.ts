@@ -1,6 +1,7 @@
 import "./style.css";
 import { animateStatsOnScroll } from "./animateStats";
 import { ExpenseManger } from "./ExpenseManger";
+import { IncomeManger } from "./IncomeManager";
 
 window.addEventListener("DOMContentLoaded", () => {
   const stats = document.querySelectorAll(
@@ -13,9 +14,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // step1 create an instance of ExpenseManger
 const expenseMangerInstance = new ExpenseManger();
+const IncomeMangerInstance = new IncomeManger();
 
 // step 2 create new expense
-const newExpense = expenseMangerInstance.createExpense({
+const newIncome1 = IncomeMangerInstance.createIncome({
   name: "Lunch",
   category: "Food",
   note: "Lunch with client",
@@ -24,7 +26,7 @@ const newExpense = expenseMangerInstance.createExpense({
   time: new Date(),
 });
 
-const newExpense1 = expenseMangerInstance.createExpense({
+const newIncome2 = expenseMangerInstance.createExpense({
   name: "Grocery Shopping",
   category: "Food",
   note: "Bought vegetables and snacks",
@@ -33,7 +35,7 @@ const newExpense1 = expenseMangerInstance.createExpense({
   time: new Date(),
 });
 
-const newExpense2 = expenseMangerInstance.createExpense({
+const newIncome3 = IncomeMangerInstance.createIncome({
   name: "Electricity Bill",
   category: "Utilities",
   note: "Monthly electricity bill",
@@ -41,7 +43,7 @@ const newExpense2 = expenseMangerInstance.createExpense({
   calendar: new Date(),
   time: new Date(),
 });
-const newExpense3 = expenseMangerInstance.createExpense({
+const newIcome4 = expenseMangerInstance.createExpense({
   name: "Gas Refill",
   category: "Fuel",
   note: "Refilled gas tank",
@@ -50,42 +52,42 @@ const newExpense3 = expenseMangerInstance.createExpense({
   time: new Date(),
 });
 
-console.log(newExpense, newExpense1, newExpense2, newExpense3);
+console.log(newIncome1, newIncome2, newIncome3, newIcome4);
 
 // step 3:Add the expense to the manger
-expenseMangerInstance.addExpense(newExpense);
-expenseMangerInstance.addExpense(newExpense1);
-expenseMangerInstance.addExpense(newExpense2);
-expenseMangerInstance.addExpense(newExpense3);
+// expenseMangerInstance.addExpense(newExpense);
+// expenseMangerInstance.addExpense(newExpense1);
+// expenseMangerInstance.addExpense(newExpense2);
+// expenseMangerInstance.addExpense(newExpense3);
 
-// step 4:retrieve all expenses using getExpense();
-const allExpenses = expenseMangerInstance.getExpense();
+// // step 4:retrieve all expenses using getExpense();
+// const allExpenses = expenseMangerInstance.getExpense();
 
-// step 5 :
-if (allExpenses) {
-  console.log(allExpenses);
-} else {
-  throw new Error("can no be found");
-}
+// // step 5 :
+// if (allExpenses) {
+//   console.log(allExpenses);
+// } else {
+//   throw new Error("can no be found");
+// }
 
-// step6:
-const deleteSuccess = expenseMangerInstance.deleteExpense(newExpense1.id);
-if (deleteSuccess) {
-  console.log(`Expense with ID ${newExpense.id} was deleted successfully.`);
-} else {
-  console.log(`Failed to delete expense with ID ${newExpense.id}.`);
-}
+// // step6:
+// const deleteSuccess = expenseMangerInstance.deleteExpense(newExpense1.id);
+// if (deleteSuccess) {
+//   console.log(`Expense with ID ${newExpense.id} was deleted successfully.`);
+// } else {
+//   console.log(`Failed to delete expense with ID ${newExpense.id}.`);
+// }
 
-// Verify by checking the remaining expenses
-const remainingExpenses = expenseMangerInstance.getExpense();
-console.log("Remaining Expenses:", remainingExpenses);
+// // Verify by checking the remaining expenses
+// const remainingExpenses = expenseMangerInstance.getExpense();
+// console.log("Remaining Expenses:", remainingExpenses);
 
-// retrieve  the expense  by it ID
-const expenseId = newExpense.id;
-const retrieveExpense = expenseMangerInstance.getExpenseById(expenseId);
-console.log(retrieveExpense);
+// // retrieve  the expense  by it ID
+// const expenseId = newExpense.id;
+// const retrieveExpense = expenseMangerInstance.getExpenseById(expenseId);
+// console.log(retrieveExpense);
 
-// Delete all entries
+// // Delete all entries
 
-expenseMangerInstance.deleteAll();
-console.log(expenseMangerInstance.getExpense()); // Output: []
+// expenseMangerInstance.deleteAll();
+// console.log(expenseMangerInstance.getExpense()); // Output: []
