@@ -2,8 +2,8 @@ import { Expense } from "./ExpenseManger";
 import { Income } from "./IncomeManager";
 
 export class BudgetManger {
-  private incomes: Income[] = [];
-  private expenses: Expense[] = [];
+  public incomes: Income[] = [];
+  public expenses: Expense[] = [];
 
   //   Add income
 
@@ -27,5 +27,13 @@ export class BudgetManger {
     return this.expenses.reduce((total, expense) => {
       return total + expense.amount;
     }, 0);
+  }
+
+  //   calculate remaining budget
+
+  calculateRemainingBudget(): number {
+    const totalIncome = this.calculateTotalIncome();
+    const totalExpense = this.calculateTotalExpense();
+    return totalIncome - totalExpense;
   }
 }

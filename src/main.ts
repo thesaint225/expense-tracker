@@ -76,3 +76,10 @@ console.log(addIncome, addIncome2);
 
 console.log("Total Income", budgetManger.calculateTotalIncome());
 console.log("Total Expenses:", budgetManger.calculateTotalExpense());
+
+// Optionally log the entire budgetManager state
+console.log("Incomes in BudgetManager:", budgetManger.incomes);
+console.log("Expenses in BudgetManager:", budgetManger.expenses);
+
+const remainingBudget = budgetManger.calculateRemainingBudget();
+console.log(remainingBudget);
