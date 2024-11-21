@@ -64,6 +64,25 @@ export class IncomeManager {
     }
   }
 
+  public updateIncome(
+    id: string,
+    updates: Partial<Omit<Income, "id" | "createAt">>
+  ): Income {
+    const existing = this.incomes.get(id);
+    if (!existing) {
+      throw new Error("Income not found ");
+    }
+    const updated: Income = {
+      ...existing,
+      ...updates,
+      id,
+      createdAt: existing.createdAt,
+      updatedAt: new Date(),
+    };
+    this.incomes.set(id, updated);
+    return updated;
+  }
+
   public deleteIncome(id: string): boolean {
     try {
       return this.incomes.delete(id);

@@ -2,6 +2,8 @@ import "./style.css";
 import { animateStatsOnScroll } from "./animateStats";
 import { ExpenseManger } from "./ExpenseManger";
 import { IncomeManager } from "./IncomeManager";
+import { BudgetManger } from "./budgetManger";
+import { Expense } from "./ExpenseManger";
 
 window.addEventListener("DOMContentLoaded", () => {
   const stats = document.querySelectorAll(
@@ -12,88 +14,65 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// step1 create an instance of ExpenseManger
-const expenseMangerInstance = new ExpenseManger();
-const incomeMangerInstance = new IncomeManager();
+// create an instance of budgetManger
 
-// step 2 create new expense
-const newIncome1 = incomeMangerInstance.createIncome({
-  name: "Lunch",
+// const budgetManger = new BudgetManger();
+const incomeManager = new IncomeManager();
+
+// Add some incomes
+const income1 = incomeManager.createIncome({
+  name: "Engineer",
+  amount: 400,
+  note: "from fievrr",
+  category: "Freelance",
+  calendar: new Date(),
+  time: new Date(),
+});
+
+const income2 = incomeManager.createIncome({
+  name: "creative Art ",
+  amount: 300,
+  note: "from fievrr",
+  category: "Freelance",
+  calendar: new Date(),
+  time: new Date(),
+});
+
+// console.log(income1, income2);
+
+const expenseManger = new ExpenseManger();
+
+// add some expense
+
+const expense1 = expenseManger.createExpense({
+  name: "breakfast",
+  amount: 200,
+  note: "with client",
   category: "Food",
-  note: "Lunch with client",
-  amount: 20,
   calendar: new Date(),
   time: new Date(),
 });
 
-const newIncome2 = expenseMangerInstance.createExpense({
-  name: "Grocery Shopping",
-  category: "Food",
-  note: "Bought vegetables and snacks",
-  amount: 50,
+const expense2 = expenseManger.createExpense({
+  name: "books",
+  amount: 150,
+  note: "with Admin",
+  category: "stationary",
   calendar: new Date(),
   time: new Date(),
 });
 
-const newIncome3 = incomeMangerInstance.createIncome({
-  name: "Electricity Bill",
-  category: "Utilities",
-  note: "Monthly electricity bill",
-  amount: 100,
-  calendar: new Date(),
-  time: new Date(),
-});
-const newIcome4 = expenseMangerInstance.createExpense({
-  name: "Gas Refill",
-  category: "Fuel",
-  note: "Refilled gas tank",
-  amount: 40,
-  calendar: new Date(),
-  time: new Date(),
-});
+// console.log(expense1, expense2);
 
-// console.log(newIncome1, newIncome2, newIncome3, newIcome4);
+const budgetManger = new BudgetManger();
 
-// step 3:Add the income to the manger
-incomeMangerInstance.addIncome(newIcome4);
-incomeMangerInstance.addIncome(newIncome1);
-incomeMangerInstance.addIncome(newIncome3);
+const addIncome = budgetManger.addIncome(income1);
+const addIncome2 = budgetManger.addIncome(income2);
 
-// // step 4:retrieve all Income using getAllIncomes();
-const allIncomes = incomeMangerInstance.getAllIncomes();
+const addExpense = budgetManger.addExpense(expense1);
+const addExpense2 = budgetManger.addExpense(expense2);
 
-// step 5 :
-if (allIncomes) {
-  console.log(allIncomes);
-} else {
-  throw new Error("can no be found");
-}
+console.log(addIncome, addIncome2);
 
-// // step6:
-// const deleteSuccess = expenseMangerInstance.deleteExpense(newExpense1.id);
-// if (deleteSuccess) {
-//   console.log(`Expense with ID ${newExpense.id} was deleted successfully.`);
-// } else {
-//   console.log(`Failed to delete expense with ID ${newExpense.id}.`);
-// }
-
-const deleteSuccess = incomeMangerInstance.deleteIncome(newIncome3.id);
-if (deleteSuccess) {
-  console.log(`Expense with ID ${newIncome2.id} was deleted successfully.`);
-} else {
-  console.log(`Failed to delete expense with ID ${newIncome2.id}.`);
-}
-
-// // Verify by checking the remaining expenses
-// const remainingExpenses = expenseMangerInstance.getExpense();
-// console.log("Remaining Expenses:", remainingExpenses);
-
-// // retrieve  the expense  by it ID
-// const expenseId = newExpense.id;
-// const retrieveExpense = expenseMangerInstance.getExpenseById(expenseId);
-// console.log(retrieveExpense);
-
-// // Delete all entries
-
-// expenseMangerInstance.deleteAll();
-// console.log(expenseMangerInstance.getExpense()); // Output: []
+console.log("Total Income", budgetManger.calculateTotalIncome());
+console.log("Total Expenses:", budgetManger.calculateTotalExpense());
