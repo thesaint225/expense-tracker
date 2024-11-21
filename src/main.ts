@@ -2,7 +2,7 @@ import "./style.css";
 import { animateStatsOnScroll } from "./animateStats";
 import { ExpenseManger } from "./ExpenseManger";
 import { IncomeManager } from "./IncomeManager";
-import { BudgetManger } from "./budgetManger";
+import { BudgetManager } from "./budgetManger";
 import { Expense } from "./ExpenseManger";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -64,7 +64,7 @@ const expense2 = expenseManger.createExpense({
 
 // console.log(expense1, expense2);
 
-const budgetManger = new BudgetManger();
+const budgetManger = new BudgetManager();
 
 const addIncome = budgetManger.addIncome(income1);
 const addIncome2 = budgetManger.addIncome(income2);
@@ -83,3 +83,7 @@ console.log("Expenses in BudgetManager:", budgetManger.expenses);
 
 const remainingBudget = budgetManger.calculateRemainingBudget();
 console.log(remainingBudget);
+
+budgetManger.removeIncome(addIncome.id);
+
+budgetManger.showIncomes();

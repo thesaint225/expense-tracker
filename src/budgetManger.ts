@@ -1,7 +1,7 @@
 import { Expense } from "./ExpenseManger";
 import { Income } from "./IncomeManager";
 
-export class BudgetManger {
+export class BudgetManager {
   public incomes: Income[] = [];
   public expenses: Expense[] = [];
 
@@ -35,5 +35,20 @@ export class BudgetManger {
     const totalIncome = this.calculateTotalIncome();
     const totalExpense = this.calculateTotalExpense();
     return totalIncome - totalExpense;
+  }
+  public removeIncome(id: string): void {
+    // Find the index of income that matches the given id
+    const index = this.incomes.findIndex((income) => income.id === id);
+
+    // if income is found , remove it from incomes array
+    if (index !== -1) {
+      this.incomes.splice(index, 1);
+    } else {
+      throw new Error("Income not found ");
+    }
+  }
+
+  public showIncomes() {
+    console.log(this.incomes);
   }
 }
