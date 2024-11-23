@@ -72,18 +72,33 @@ const addIncome2 = budgetManger.addIncome(income2);
 const addExpense = budgetManger.addExpense(expense1);
 const addExpense2 = budgetManger.addExpense(expense2);
 
-console.log(addIncome, addIncome2);
+console.log(addExpense, addExpense2);
 
-console.log("Total Income", budgetManger.calculateTotalIncome());
-console.log("Total Expenses:", budgetManger.calculateTotalExpense());
+budgetManger.updateExpense(addExpense.id, { note: "with ceo" });
+console.log(addExpense);
+console.log("updated Expense", budgetManger.expenses);
+
+// console.log(addIncome, addIncome2);
+
+// console.log("Total Income", budgetManger.calculateTotalIncome());
+// console.log("Total Expenses:", budgetManger.calculateTotalExpense());
 
 // Optionally log the entire budgetManager state
-console.log("Incomes in BudgetManager:", budgetManger.incomes);
-console.log("Expenses in BudgetManager:", budgetManger.expenses);
+// console.log("Incomes in BudgetManager:", budgetManger.incomes);
+// console.log("Expenses in BudgetManager:", budgetManger.expenses);
 
-const remainingBudget = budgetManger.calculateRemainingBudget();
-console.log(remainingBudget);
+// const remainingBudget = budgetManger.calculateRemainingBudget();
+// console.log(remainingBudget);
 
-budgetManger.removeIncome(addIncome.id);
+// budgetManger.showIncomes();
 
-budgetManger.showIncomes();
+// try {
+//   budgetManger.updateIncome(addIncome.id, { name: "webDesigner" });
+//   console.log("after update:", budgetManger.addIncome);
+// } catch (error) {
+//   if (error instanceof Error) {
+//     console.error(error.message);
+//   } else {
+//     console.error("unknown error ");
+//   }
+// }

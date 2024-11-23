@@ -48,6 +48,39 @@ export class BudgetManager {
     }
   }
 
+  public updateIncome(id: string, updatedIncome: Partial<Income>): void {
+    // find income by its id
+    const index = this.incomes.findIndex((income) => income.id === id);
+
+    // if income exists, update its properties
+    if (index !== -1) {
+      this.incomes[index] = { ...this.incomes[index], ...updatedIncome };
+    } else {
+      throw new Error("Income not found ");
+    }
+  }
+
+  public removeExpense(id: string): void {
+    // find index of expense that match the given id
+    const index = this.expenses.findIndex((expense) => expense.id === id);
+    if (index != -1) {
+      this.expenses.splice(index, 1);
+    } else {
+      throw new Error("Expense not found");
+    }
+  }
+
+  public updateExpense(id: string, updateExpense: Partial<Expense>): void {
+    // Find expense by id
+    const index = this.expenses.findIndex((expense) => expense.id === id);
+    if (index != -1) {
+      // Merge existing expense with the updated properties
+      this.expenses[index] = { ...this.expenses[index], ...updateExpense };
+    } else {
+      throw new Error("expense not found");
+    }
+  }
+
   public showIncomes() {
     console.log(this.incomes);
   }
